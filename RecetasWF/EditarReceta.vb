@@ -12,10 +12,8 @@
         Dim receta = RecetasDataSet1.recetas.FindByID(idReceta)
 
         txtNombre.Text = receta.Nombre
-        txtDescripcion.Text = receta.Descripcion
         txtOrigen.Text = receta.Origen
         txtHistoria.Text = receta.Historia
-        txtInstrucciones.Text = receta.Instrucciones
         txtTips.Text = receta.Tips
 
         If IsDBNull(receta("Costo")) Then
@@ -67,21 +65,114 @@
 
     End Sub
 
-    Private Sub ckbxPeso_CheckedChanged(sender As Object, e As EventArgs) Handles ckbxPeso.CheckedChanged
-        If ckbxPeso.Checked Then
-            SplitContainerPeso.Panel2Collapsed = False
+    Private Sub btnAgregarI_Click(sender As Object, e As EventArgs) Handles btnAgregarI.Click
+        Dim ingredienteID As Integer
+        Dim repetidoEnDataSet = False
+        Dim repetidoEnFlowLayoutPanel = False
+        Dim nuevoIngrediente = RecetasDataSet1.ingredientes.NewRow
+        Dim nombreNuevoIngrediente = cbxNombreNI.Text
+
+        For Each row As DataRow In RecetasDataSet1.ingredientes
+            If nombreNuevoIngrediente.ToUpper.Equals(row("Nombre").ToString.ToUpper) Then
+                repetidoEnDataSet = True
+            End If
+        Next
+
+        For Each gbxIngrediente As GroupBox In EditarIngredientesFLP.Controls
+            For Each lblCantidad As Label In gbxIngrediente.Controls.Find("NombreIngrediente", True)
+                If nombreNuevoIngrediente.ToUpper.Equals(lblCantidad.Text.ToUpper) Then
+                    repetidoEnFlowLayoutPanel = True
+                End If
+            Next
+        Next
+
+        If Not repetidoEnDataSet Then
+
+            nuevoIngrediente("Nombre") = nombreNuevoIngrediente
+            nuevoIngrediente("Cantidad") = 1
+            If cbxUnidadNI.Text.Equals("pza.") Or cbxUnidadNI.Text.Equals("g.") Then
+                nuevoIngrediente("Unidad") = "kg."
+            ElseIf cbxUnidadNI.Text.Equals("ml.") Or cbxUnidadNI.Text.Equals("oz.") Then
+                nuevoIngrediente("Unidad") = "L."
+            Else
+                nuevoIngrediente("Unidad") = cbxUnidadNI.Text
+            End If
+            nuevoIngrediente("PrecioUnitario") = 1
+            nuevoIngrediente("Rendimiento") = 90
+            nuevoIngrediente("PrecioREal") = 1
+            RecetasDataSet1.ingredientes.Rows.Add(nuevoIngrediente)
+            IngredientesTableAdapter1.Update(RecetasDataSet1.ingredientes)
+            IngredientesTableAdapter1.Fill(RecetasDataSet1.ingredientes)
+
+        End If
+
+
+        If repetidoEnFlowLayoutPanel = True Then
+            MessageBox.Show("Ingrediente repetido")
+            cbxNombreNI.Focus()
         Else
-            SplitContainerPeso.Panel2Collapsed = True
+
+            For Each ingrediente In RecetasDataSet1.ingredientes
+                If ingrediente("Nombre").ToString.ToUpper.Equals(nombreNuevoIngrediente.ToUpper) Then
+                    ingredienteID = ingrediente("ID")
+                End If
+            Next
+
+            dibujarIngredientes(ingredienteID, nombreNuevoIngrediente, numCantidadNI.Value, cbxUnidadNI.Text.ToString, False)
+
         End If
     End Sub
 
+    Private Sub btnAgregarCat_Click(sender As Object, e As EventArgs) Handles btnAgregarCat.Click
+        Dim categoriaID As Integer
+        Dim repetidoEnDataSet = False
+        Dim repetidoEnFlowLayoutPanel = False
+        Dim nuevaCateoria = RecetasDataSet1.categorias.NewRow
+        Dim nuevaCat = True
 
-
-    Private Sub ckbxPorciones_CheckedChanged(sender As Object, e As EventArgs) Handles ckbxPorciones.CheckedChanged
-        If ckbxPorciones.Checked Then
-            SplitContainerPorciones.Panel2Collapsed = False
+        If txtNuevaCategoria.Text = "" Then
+            MessageBox.Show("Ingrese nombre de Categoria")
+            txtNuevaCategoria.Focus()
         Else
-            SplitContainerPorciones.Panel2Collapsed = True
+
+            For Each row As DataRow In RecetasDataSet1.categorias
+                If txtNuevaCategoria.Text.ToUpper.Equals(row("Nombre").ToString.ToUpper) Then
+                    repetidoEnDataSet = True
+                End If
+            Next
+
+            For Each gbxCategoria As GroupBox In CategoriasERFLP.Controls
+                For Each lblNombre As Label In gbxCategoria.Controls.Find("NombreCategoria", True)
+                    If txtNuevaCategoria.Text.ToUpper.Equals(lblNombre.Text.ToUpper) Then
+                        repetidoEnFlowLayoutPanel = True
+                    End If
+                Next
+            Next
+
+            If Not repetidoEnDataSet Then
+
+                nuevaCateoria("Nombre") = txtNuevaCategoria.Text
+                RecetasDataSet1.categorias.Rows.Add(nuevaCateoria)
+                CategoriasTableAdapter1.Update(RecetasDataSet1.categorias)
+                CategoriasTableAdapter1.Fill(RecetasDataSet1.categorias)
+
+                For Each categoria In RecetasDataSet1.categorias
+                    If categoria("Nombre").ToString.ToUpper.Equals(txtNuevaCategoria.Text.ToUpper) Then
+                        categoriaID = categoria("ID")
+                    End If
+                Next
+
+                dibujarCategorias(txtNuevaCategoria.Text, categoriaID, nuevaCat, False, False)
+                txtNuevaCategoria.Text = ""
+                CategoriasERFLP.AutoScrollPosition = New Point(0, CategoriasERFLP.VerticalScroll.Maximum)
+
+            End If
+
+            If repetidoEnFlowLayoutPanel Then
+                MessageBox.Show("Categoria repetida")
+                txtNuevaCategoria.Focus()
+            End If
+
         End If
     End Sub
 
@@ -91,7 +182,6 @@
         Dim recetaRow = RecetasDataSet1.recetas.FindByID(idReceta)
 
         recetaRow("Nombre") = txtNombre.Text
-        recetaRow("Descripcion") = txtDescripcion.Text
         recetaRow("Origen") = txtOrigen.Text
         recetaRow("Historia") = txtHistoria.Text
         If ckbxPeso.Checked Then
@@ -135,26 +225,23 @@
 
     End Sub
 
-    Private Sub numPorciones_ValueChanged(sender As Object, e As EventArgs) Handles numPorciones.ValueChanged
-
-    End Sub
-
-    Private Sub numPeso_ValueChanged(sender As Object, e As EventArgs) Handles numPeso.ValueChanged
-
-    End Sub
-
-    Private Sub btnNuevoI_Click(sender As Object, e As EventArgs) Handles btnNuevoI.Click
-        If btnNuevoI.Text.Equals("Nuevo Ingrediente") Then
-            SplitContainer1.Panel2Collapsed = False
-            btnNuevoI.Text = "Cerrar"
+    Private Sub ckbxPeso_CheckedChanged(sender As Object, e As EventArgs) Handles ckbxPeso.CheckedChanged
+        If ckbxPeso.Checked Then
+            SplitContainerPeso.Panel2Collapsed = False
         Else
-            SplitContainer1.Panel2Collapsed = True
-            btnNuevoI.Text = "Nuevo Ingrediente"
+            SplitContainerPeso.Panel2Collapsed = True
         End If
-
     End Sub
 
-    Private Sub btnAgregarCat_Click(sender As Object, e As EventArgs) Handles btnAgregarCat.Click
 
+
+    Private Sub ckbxPorciones_CheckedChanged(sender As Object, e As EventArgs) Handles ckbxPorciones.CheckedChanged
+        If ckbxPorciones.Checked Then
+            SplitContainerPorciones.Panel2Collapsed = False
+        Else
+            SplitContainerPorciones.Panel2Collapsed = True
+        End If
     End Sub
+
+
 End Class

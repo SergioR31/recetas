@@ -46,8 +46,6 @@ Partial Class EditarReceta
         Me.numPeso = New System.Windows.Forms.NumericUpDown()
         Me.numCosto = New System.Windows.Forms.NumericUpDown()
         Me.btnGuardar = New System.Windows.Forms.Button()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.btnNuevoI = New System.Windows.Forms.Button()
         Me.numCantidadNI = New System.Windows.Forms.NumericUpDown()
         Me.cbxNombreNI = New System.Windows.Forms.ComboBox()
         Me.btnAgregarI = New System.Windows.Forms.Button()
@@ -66,20 +64,21 @@ Partial Class EditarReceta
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtTips = New System.Windows.Forms.TextBox()
         Me.txtInstrucciones = New System.Windows.Forms.TextBox()
         Me.txtHistoria = New System.Windows.Forms.TextBox()
         Me.txtOrigen = New System.Windows.Forms.TextBox()
-        Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtNuevaCategoria = New System.Windows.Forms.TextBox()
         Me.btnAgregarCat = New System.Windows.Forms.Button()
         Me.CategoriasERFLP = New System.Windows.Forms.FlowLayoutPanel()
         Me.EditarIngredientesFLP = New System.Windows.Forms.FlowLayoutPanel()
         Me.Ingredientes_de_recetaTableAdapter1 = New RecetasWF.recetasDataSetTableAdapters.ingredientes_de_recetaTableAdapter()
+        Me.cbxGrados = New System.Windows.Forms.ComboBox()
+        Me.numTemperatura = New System.Windows.Forms.NumericUpDown()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.RecetasDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UnidadesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,13 +96,10 @@ Partial Class EditarReceta
         Me.SplitContainerPeso.SuspendLayout()
         CType(Me.numPeso, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numCosto, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainer1.Panel1.SuspendLayout()
-        Me.SplitContainer1.Panel2.SuspendLayout()
-        Me.SplitContainer1.SuspendLayout()
         CType(Me.numCantidadNI, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numHoras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numMinutos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.numTemperatura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RecetasDataSet1
@@ -157,7 +153,7 @@ Partial Class EditarReceta
         '
         'SplitContainerPorciones
         '
-        Me.SplitContainerPorciones.Location = New System.Drawing.Point(204, 418)
+        Me.SplitContainerPorciones.Location = New System.Drawing.Point(911, 12)
         Me.SplitContainerPorciones.Name = "SplitContainerPorciones"
         Me.SplitContainerPorciones.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -229,7 +225,7 @@ Partial Class EditarReceta
         '
         'SplitContainerPeso
         '
-        Me.SplitContainerPeso.Location = New System.Drawing.Point(9, 418)
+        Me.SplitContainerPeso.Location = New System.Drawing.Point(716, 12)
         Me.SplitContainerPeso.Name = "SplitContainerPeso"
         Me.SplitContainerPeso.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -281,7 +277,7 @@ Partial Class EditarReceta
         'numCosto
         '
         Me.numCosto.DecimalPlaces = 2
-        Me.numCosto.Location = New System.Drawing.Point(461, 276)
+        Me.numCosto.Location = New System.Drawing.Point(866, 196)
         Me.numCosto.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.numCosto.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numCosto.Name = "numCosto"
@@ -298,46 +294,14 @@ Partial Class EditarReceta
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
-        'SplitContainer1
-        '
-        Me.SplitContainer1.Location = New System.Drawing.Point(751, 355)
-        Me.SplitContainer1.Name = "SplitContainer1"
-        Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
-        '
-        'SplitContainer1.Panel1
-        '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.btnNuevoI)
-        '
-        'SplitContainer1.Panel2
-        '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.numCantidadNI)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.cbxNombreNI)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.btnAgregarI)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label1)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.cbxUnidadNI)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label3)
-        Me.SplitContainer1.Size = New System.Drawing.Size(347, 208)
-        Me.SplitContainer1.SplitterDistance = 78
-        Me.SplitContainer1.TabIndex = 39
-        '
-        'btnNuevoI
-        '
-        Me.btnNuevoI.Location = New System.Drawing.Point(106, 12)
-        Me.btnNuevoI.Name = "btnNuevoI"
-        Me.btnNuevoI.Size = New System.Drawing.Size(155, 33)
-        Me.btnNuevoI.TabIndex = 1
-        Me.btnNuevoI.Text = "Nuevo Ingrediente"
-        Me.btnNuevoI.UseVisualStyleBackColor = True
-        '
         'numCantidadNI
         '
         Me.numCantidadNI.DecimalPlaces = 2
-        Me.numCantidadNI.Location = New System.Drawing.Point(10, 90)
+        Me.numCantidadNI.Location = New System.Drawing.Point(420, 42)
         Me.numCantidadNI.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.numCantidadNI.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numCantidadNI.Name = "numCantidadNI"
-        Me.numCantidadNI.Size = New System.Drawing.Size(101, 22)
+        Me.numCantidadNI.Size = New System.Drawing.Size(76, 22)
         Me.numCantidadNI.TabIndex = 11
         Me.numCantidadNI.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -348,7 +312,7 @@ Partial Class EditarReceta
         Me.cbxNombreNI.DataSource = Me.IngredientesBindingSource
         Me.cbxNombreNI.DisplayMember = "Nombre"
         Me.cbxNombreNI.FormattingEnabled = True
-        Me.cbxNombreNI.Location = New System.Drawing.Point(10, 31)
+        Me.cbxNombreNI.Location = New System.Drawing.Point(295, 41)
         Me.cbxNombreNI.Name = "cbxNombreNI"
         Me.cbxNombreNI.Size = New System.Drawing.Size(121, 24)
         Me.cbxNombreNI.TabIndex = 4
@@ -356,7 +320,7 @@ Partial Class EditarReceta
         '
         'btnAgregarI
         '
-        Me.btnAgregarI.Location = New System.Drawing.Point(244, 88)
+        Me.btnAgregarI.Location = New System.Drawing.Point(597, 40)
         Me.btnAgregarI.Name = "btnAgregarI"
         Me.btnAgregarI.Size = New System.Drawing.Size(90, 24)
         Me.btnAgregarI.TabIndex = 1
@@ -366,7 +330,7 @@ Partial Class EditarReceta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 10)
+        Me.Label1.Location = New System.Drawing.Point(292, 20)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(79, 17)
         Me.Label1.TabIndex = 3
@@ -380,16 +344,16 @@ Partial Class EditarReceta
         Me.cbxUnidadNI.DisplayMember = "Unidad"
         Me.cbxUnidadNI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxUnidadNI.FormattingEnabled = True
-        Me.cbxUnidadNI.Location = New System.Drawing.Point(117, 88)
+        Me.cbxUnidadNI.Location = New System.Drawing.Point(502, 40)
         Me.cbxUnidadNI.Name = "cbxUnidadNI"
-        Me.cbxUnidadNI.Size = New System.Drawing.Size(121, 24)
+        Me.cbxUnidadNI.Size = New System.Drawing.Size(89, 24)
         Me.cbxUnidadNI.TabIndex = 5
         Me.cbxUnidadNI.ValueMember = "Unidad"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 68)
+        Me.Label2.Location = New System.Drawing.Point(417, 20)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(64, 17)
         Me.Label2.TabIndex = 3
@@ -398,7 +362,7 @@ Partial Class EditarReceta
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(113, 68)
+        Me.Label3.Location = New System.Drawing.Point(498, 20)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(53, 17)
         Me.Label3.TabIndex = 3
@@ -406,26 +370,26 @@ Partial Class EditarReceta
         '
         'numHoras
         '
-        Me.numHoras.Location = New System.Drawing.Point(451, 383)
+        Me.numHoras.Location = New System.Drawing.Point(721, 137)
         Me.numHoras.Maximum = New Decimal(New Integer() {23, 0, 0, 0})
         Me.numHoras.Name = "numHoras"
-        Me.numHoras.Size = New System.Drawing.Size(120, 22)
+        Me.numHoras.Size = New System.Drawing.Size(48, 22)
         Me.numHoras.TabIndex = 38
         '
         'numMinutos
         '
-        Me.numMinutos.Location = New System.Drawing.Point(615, 382)
+        Me.numMinutos.Location = New System.Drawing.Point(776, 137)
         Me.numMinutos.Maximum = New Decimal(New Integer() {59, 0, 0, 0})
         Me.numMinutos.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numMinutos.Name = "numMinutos"
-        Me.numMinutos.Size = New System.Drawing.Size(120, 22)
+        Me.numMinutos.Size = New System.Drawing.Size(48, 22)
         Me.numMinutos.TabIndex = 37
         Me.numMinutos.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(609, 363)
+        Me.Label19.Location = New System.Drawing.Point(770, 118)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(57, 17)
         Me.Label19.TabIndex = 35
@@ -434,7 +398,7 @@ Partial Class EditarReceta
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(448, 363)
+        Me.Label18.Location = New System.Drawing.Point(718, 117)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(46, 17)
         Me.Label18.TabIndex = 34
@@ -443,7 +407,7 @@ Partial Class EditarReceta
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(448, 327)
+        Me.Label16.Location = New System.Drawing.Point(716, 95)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(155, 17)
         Me.Label16.TabIndex = 33
@@ -452,7 +416,7 @@ Partial Class EditarReceta
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(294, 276)
+        Me.Label15.Location = New System.Drawing.Point(863, 176)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(44, 17)
         Me.Label15.TabIndex = 32
@@ -461,7 +425,7 @@ Partial Class EditarReceta
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(294, 215)
+        Me.Label14.Location = New System.Drawing.Point(721, 236)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(35, 17)
         Me.Label14.TabIndex = 31
@@ -470,16 +434,16 @@ Partial Class EditarReceta
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(294, 124)
+        Me.Label13.Location = New System.Drawing.Point(322, 245)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(91, 17)
+        Me.Label13.Size = New System.Drawing.Size(144, 17)
         Me.Label13.TabIndex = 30
-        Me.Label13.Text = "Instrucciones"
+        Me.Label13.Text = "Modo de Preparacion"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(294, 47)
+        Me.Label8.Location = New System.Drawing.Point(6, 75)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(56, 17)
         Me.Label8.TabIndex = 36
@@ -488,7 +452,7 @@ Partial Class EditarReceta
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(294, 19)
+        Me.Label7.Location = New System.Drawing.Point(6, 47)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(51, 17)
         Me.Label7.TabIndex = 29
@@ -497,20 +461,11 @@ Partial Class EditarReceta
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 75)
+        Me.Label6.Location = New System.Drawing.Point(9, 216)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(69, 17)
         Me.Label6.TabIndex = 28
         Me.Label6.Text = "Categoria"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 47)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(82, 17)
-        Me.Label5.TabIndex = 27
-        Me.Label5.Text = "Descripcion"
         '
         'Label4
         '
@@ -524,7 +479,7 @@ Partial Class EditarReceta
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 307)
+        Me.Label17.Location = New System.Drawing.Point(6, 485)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(114, 17)
         Me.Label17.TabIndex = 25
@@ -532,41 +487,34 @@ Partial Class EditarReceta
         '
         'txtTips
         '
-        Me.txtTips.Location = New System.Drawing.Point(461, 215)
+        Me.txtTips.Location = New System.Drawing.Point(724, 266)
         Me.txtTips.Multiline = True
         Me.txtTips.Name = "txtTips"
-        Me.txtTips.Size = New System.Drawing.Size(183, 55)
+        Me.txtTips.Size = New System.Drawing.Size(273, 57)
         Me.txtTips.TabIndex = 24
         '
         'txtInstrucciones
         '
-        Me.txtInstrucciones.Location = New System.Drawing.Point(461, 124)
+        Me.txtInstrucciones.Location = New System.Drawing.Point(325, 275)
         Me.txtInstrucciones.Multiline = True
         Me.txtInstrucciones.Name = "txtInstrucciones"
-        Me.txtInstrucciones.Size = New System.Drawing.Size(183, 70)
+        Me.txtInstrucciones.Size = New System.Drawing.Size(362, 203)
         Me.txtInstrucciones.TabIndex = 23
         '
         'txtHistoria
         '
-        Me.txtHistoria.Location = New System.Drawing.Point(461, 47)
+        Me.txtHistoria.Location = New System.Drawing.Point(9, 95)
         Me.txtHistoria.Multiline = True
         Me.txtHistoria.Name = "txtHistoria"
-        Me.txtHistoria.Size = New System.Drawing.Size(183, 71)
+        Me.txtHistoria.Size = New System.Drawing.Size(264, 99)
         Me.txtHistoria.TabIndex = 22
         '
         'txtOrigen
         '
-        Me.txtOrigen.Location = New System.Drawing.Point(461, 19)
+        Me.txtOrigen.Location = New System.Drawing.Point(173, 47)
         Me.txtOrigen.Name = "txtOrigen"
         Me.txtOrigen.Size = New System.Drawing.Size(100, 22)
         Me.txtOrigen.TabIndex = 21
-        '
-        'txtDescripcion
-        '
-        Me.txtDescripcion.Location = New System.Drawing.Point(173, 47)
-        Me.txtDescripcion.Name = "txtDescripcion"
-        Me.txtDescripcion.Size = New System.Drawing.Size(100, 22)
-        Me.txtDescripcion.TabIndex = 20
         '
         'txtNombre
         '
@@ -577,14 +525,14 @@ Partial Class EditarReceta
         '
         'txtNuevaCategoria
         '
-        Me.txtNuevaCategoria.Location = New System.Drawing.Point(9, 327)
+        Me.txtNuevaCategoria.Location = New System.Drawing.Point(9, 505)
         Me.txtNuevaCategoria.Name = "txtNuevaCategoria"
         Me.txtNuevaCategoria.Size = New System.Drawing.Size(130, 22)
         Me.txtNuevaCategoria.TabIndex = 18
         '
         'btnAgregarCat
         '
-        Me.btnAgregarCat.Location = New System.Drawing.Point(161, 325)
+        Me.btnAgregarCat.Location = New System.Drawing.Point(161, 503)
         Me.btnAgregarCat.Name = "btnAgregarCat"
         Me.btnAgregarCat.Size = New System.Drawing.Size(90, 24)
         Me.btnAgregarCat.TabIndex = 17
@@ -595,9 +543,9 @@ Partial Class EditarReceta
         '
         Me.CategoriasERFLP.AutoScroll = True
         Me.CategoriasERFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.CategoriasERFLP.Location = New System.Drawing.Point(9, 104)
+        Me.CategoriasERFLP.Location = New System.Drawing.Point(12, 245)
         Me.CategoriasERFLP.Name = "CategoriasERFLP"
-        Me.CategoriasERFLP.Size = New System.Drawing.Size(264, 189)
+        Me.CategoriasERFLP.Size = New System.Drawing.Size(264, 217)
         Me.CategoriasERFLP.TabIndex = 16
         Me.CategoriasERFLP.WrapContents = False
         '
@@ -605,9 +553,9 @@ Partial Class EditarReceta
         '
         Me.EditarIngredientesFLP.AutoScroll = True
         Me.EditarIngredientesFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.EditarIngredientesFLP.Location = New System.Drawing.Point(751, 56)
+        Me.EditarIngredientesFLP.Location = New System.Drawing.Point(323, 71)
         Me.EditarIngredientesFLP.Name = "EditarIngredientesFLP"
-        Me.EditarIngredientesFLP.Size = New System.Drawing.Size(324, 293)
+        Me.EditarIngredientesFLP.Size = New System.Drawing.Size(324, 149)
         Me.EditarIngredientesFLP.TabIndex = 15
         Me.EditarIngredientesFLP.WrapContents = False
         '
@@ -615,16 +563,51 @@ Partial Class EditarReceta
         '
         Me.Ingredientes_de_recetaTableAdapter1.ClearBeforeFill = True
         '
+        'cbxGrados
+        '
+        Me.cbxGrados.FormattingEnabled = True
+        Me.cbxGrados.Items.AddRange(New Object() {"°C", "°F"})
+        Me.cbxGrados.Location = New System.Drawing.Point(783, 196)
+        Me.cbxGrados.Name = "cbxGrados"
+        Me.cbxGrados.Size = New System.Drawing.Size(55, 24)
+        Me.cbxGrados.TabIndex = 46
+        '
+        'numTemperatura
+        '
+        Me.numTemperatura.Location = New System.Drawing.Point(722, 196)
+        Me.numTemperatura.Maximum = New Decimal(New Integer() {23, 0, 0, 0})
+        Me.numTemperatura.Name = "numTemperatura"
+        Me.numTemperatura.Size = New System.Drawing.Size(55, 22)
+        Me.numTemperatura.TabIndex = 45
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(719, 166)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(90, 17)
+        Me.Label9.TabIndex = 44
+        Me.Label9.Text = "Temperatura"
+        '
         'EditarReceta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1104, 598)
+        Me.Controls.Add(Me.cbxGrados)
+        Me.Controls.Add(Me.numTemperatura)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.numCantidadNI)
         Me.Controls.Add(Me.SplitContainerPorciones)
+        Me.Controls.Add(Me.cbxNombreNI)
         Me.Controls.Add(Me.SplitContainerPeso)
+        Me.Controls.Add(Me.btnAgregarI)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.numCosto)
+        Me.Controls.Add(Me.cbxUnidadNI)
         Me.Controls.Add(Me.btnGuardar)
-        Me.Controls.Add(Me.SplitContainer1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.numHoras)
         Me.Controls.Add(Me.numMinutos)
         Me.Controls.Add(Me.Label19)
@@ -636,14 +619,12 @@ Partial Class EditarReceta
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.txtTips)
         Me.Controls.Add(Me.txtInstrucciones)
         Me.Controls.Add(Me.txtHistoria)
         Me.Controls.Add(Me.txtOrigen)
-        Me.Controls.Add(Me.txtDescripcion)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtNuevaCategoria)
         Me.Controls.Add(Me.btnAgregarCat)
@@ -671,14 +652,10 @@ Partial Class EditarReceta
         Me.SplitContainerPeso.ResumeLayout(False)
         CType(Me.numPeso, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numCosto, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainer1.Panel1.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.PerformLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainer1.ResumeLayout(False)
         CType(Me.numCantidadNI, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numHoras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numMinutos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.numTemperatura, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -707,8 +684,6 @@ Partial Class EditarReceta
     Friend WithEvents numPeso As NumericUpDown
     Friend WithEvents numCosto As NumericUpDown
     Friend WithEvents btnGuardar As Button
-    Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents btnNuevoI As Button
     Friend WithEvents numCantidadNI As NumericUpDown
     Friend WithEvents cbxNombreNI As ComboBox
     Friend WithEvents btnAgregarI As Button
@@ -727,18 +702,19 @@ Partial Class EditarReceta
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents txtTips As TextBox
     Friend WithEvents txtInstrucciones As TextBox
     Friend WithEvents txtHistoria As TextBox
     Friend WithEvents txtOrigen As TextBox
-    Friend WithEvents txtDescripcion As TextBox
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents txtNuevaCategoria As TextBox
     Friend WithEvents btnAgregarCat As Button
     Friend WithEvents CategoriasERFLP As FlowLayoutPanel
     Friend WithEvents EditarIngredientesFLP As FlowLayoutPanel
     Friend WithEvents Ingredientes_de_recetaTableAdapter1 As recetasDataSetTableAdapters.ingredientes_de_recetaTableAdapter
+    Friend WithEvents cbxGrados As ComboBox
+    Friend WithEvents numTemperatura As NumericUpDown
+    Friend WithEvents Label9 As Label
 End Class

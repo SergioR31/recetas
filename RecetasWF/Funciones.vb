@@ -219,7 +219,7 @@
         Inicio.btnEliminarReceta.Visible = True
 
         Inicio.Label1.Text = recetaDataRow.Nombre
-        Inicio.Label2.Text = recetaDataRow.Descripcion
+        Inicio.Label2.Text = recetaDataRow.Historia
     End Sub
 
     Public Sub Load_Inicio()

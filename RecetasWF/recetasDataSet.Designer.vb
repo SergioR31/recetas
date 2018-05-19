@@ -1501,8 +1501,6 @@ Partial Public Class recetasDataSet
         
         Private columnNombre As Global.System.Data.DataColumn
         
-        Private columnDescripcion As Global.System.Data.DataColumn
-        
         Private columnOrigen As Global.System.Data.DataColumn
         
         Private columnHistoria As Global.System.Data.DataColumn
@@ -1513,8 +1511,6 @@ Partial Public Class recetasDataSet
         
         Private columnTamanioPorcion As Global.System.Data.DataColumn
         
-        Private columnInstrucciones As Global.System.Data.DataColumn
-        
         Private columnTips As Global.System.Data.DataColumn
         
         Private columnCosto As Global.System.Data.DataColumn
@@ -1524,6 +1520,10 @@ Partial Public Class recetasDataSet
         Private columnUnidadPeso As Global.System.Data.DataColumn
         
         Private columnUnidadPorcion As Global.System.Data.DataColumn
+        
+        Private columnTemperatura As Global.System.Data.DataColumn
+        
+        Private columnModoPreparacion As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -1578,14 +1578,6 @@ Partial Public Class recetasDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property DescripcionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDescripcion
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property OrigenColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnOrigen
@@ -1621,14 +1613,6 @@ Partial Public Class recetasDataSet
         Public ReadOnly Property TamanioPorcionColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnTamanioPorcion
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property InstruccionesColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnInstrucciones
             End Get
         End Property
         
@@ -1673,6 +1657,22 @@ Partial Public Class recetasDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TemperaturaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTemperatura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ModoPreparacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnModoPreparacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1709,14 +1709,14 @@ Partial Public Class recetasDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddrecetasRow(ByVal Nombre As String, ByVal Descripcion As String, ByVal Origen As String, ByVal Historia As String, ByVal Peso As Decimal, ByVal Porciones As Integer, ByVal TamanioPorcion As Decimal, ByVal Instrucciones As String, ByVal Tips As String, ByVal Costo As String, ByVal TiempoPreparacion As System.TimeSpan, ByVal parentunidadesRowByunidad_peso As unidadesRow, ByVal parentunidadesRowByunidad_porcion As unidadesRow) As recetasRow
+        Public Overloads Function AddrecetasRow(ByVal Nombre As String, ByVal Origen As String, ByVal Historia As String, ByVal Peso As Decimal, ByVal Porciones As Integer, ByVal TamanioPorcion As Decimal, ByVal Tips As String, ByVal Costo As String, ByVal TiempoPreparacion As System.TimeSpan, ByVal parentunidadesRowByunidad_peso As unidadesRow, ByVal parentunidadesRowByunidad_porcion As unidadesRow, ByVal Temperatura As String, ByVal ModoPreparacion As String) As recetasRow
             Dim rowrecetasRow As recetasRow = CType(Me.NewRow,recetasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Nombre, Descripcion, Origen, Historia, Peso, Porciones, TamanioPorcion, Instrucciones, Tips, Costo, TiempoPreparacion, Nothing, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Nombre, Origen, Historia, Peso, Porciones, TamanioPorcion, Tips, Costo, TiempoPreparacion, Nothing, Nothing, Temperatura, ModoPreparacion}
             If (Not (parentunidadesRowByunidad_peso) Is Nothing) Then
-                columnValuesArray(12) = parentunidadesRowByunidad_peso(0)
+                columnValuesArray(10) = parentunidadesRowByunidad_peso(0)
             End If
             If (Not (parentunidadesRowByunidad_porcion) Is Nothing) Then
-                columnValuesArray(13) = parentunidadesRowByunidad_porcion(0)
+                columnValuesArray(11) = parentunidadesRowByunidad_porcion(0)
             End If
             rowrecetasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowrecetasRow)
@@ -1748,18 +1748,18 @@ Partial Public Class recetasDataSet
         Friend Sub InitVars()
             Me.columnID = MyBase.Columns("ID")
             Me.columnNombre = MyBase.Columns("Nombre")
-            Me.columnDescripcion = MyBase.Columns("Descripcion")
             Me.columnOrigen = MyBase.Columns("Origen")
             Me.columnHistoria = MyBase.Columns("Historia")
             Me.columnPeso = MyBase.Columns("Peso")
             Me.columnPorciones = MyBase.Columns("Porciones")
             Me.columnTamanioPorcion = MyBase.Columns("TamanioPorcion")
-            Me.columnInstrucciones = MyBase.Columns("Instrucciones")
             Me.columnTips = MyBase.Columns("Tips")
             Me.columnCosto = MyBase.Columns("Costo")
             Me.columnTiempoPreparacion = MyBase.Columns("TiempoPreparacion")
             Me.columnUnidadPeso = MyBase.Columns("UnidadPeso")
             Me.columnUnidadPorcion = MyBase.Columns("UnidadPorcion")
+            Me.columnTemperatura = MyBase.Columns("Temperatura")
+            Me.columnModoPreparacion = MyBase.Columns("ModoPreparacion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1769,8 +1769,6 @@ Partial Public Class recetasDataSet
             MyBase.Columns.Add(Me.columnID)
             Me.columnNombre = New Global.System.Data.DataColumn("Nombre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre)
-            Me.columnDescripcion = New Global.System.Data.DataColumn("Descripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDescripcion)
             Me.columnOrigen = New Global.System.Data.DataColumn("Origen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOrigen)
             Me.columnHistoria = New Global.System.Data.DataColumn("Historia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -1781,8 +1779,6 @@ Partial Public Class recetasDataSet
             MyBase.Columns.Add(Me.columnPorciones)
             Me.columnTamanioPorcion = New Global.System.Data.DataColumn("TamanioPorcion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTamanioPorcion)
-            Me.columnInstrucciones = New Global.System.Data.DataColumn("Instrucciones", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInstrucciones)
             Me.columnTips = New Global.System.Data.DataColumn("Tips", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTips)
             Me.columnCosto = New Global.System.Data.DataColumn("Costo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -1793,6 +1789,10 @@ Partial Public Class recetasDataSet
             MyBase.Columns.Add(Me.columnUnidadPeso)
             Me.columnUnidadPorcion = New Global.System.Data.DataColumn("UnidadPorcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUnidadPorcion)
+            Me.columnTemperatura = New Global.System.Data.DataColumn("Temperatura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTemperatura)
+            Me.columnModoPreparacion = New Global.System.Data.DataColumn("ModoPreparacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnModoPreparacion)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -1800,14 +1800,14 @@ Partial Public Class recetasDataSet
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
             Me.columnNombre.MaxLength = 50
-            Me.columnDescripcion.MaxLength = 250
             Me.columnOrigen.MaxLength = 100
             Me.columnHistoria.MaxLength = 500
-            Me.columnInstrucciones.MaxLength = 2500
             Me.columnTips.MaxLength = 500
             Me.columnCosto.MaxLength = 45
             Me.columnUnidadPeso.MaxLength = 45
             Me.columnUnidadPorcion.MaxLength = 45
+            Me.columnTemperatura.MaxLength = 45
+            Me.columnModoPreparacion.MaxLength = 2500
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3513,21 +3513,6 @@ Partial Public Class recetasDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Descripcion() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablerecetas.DescripcionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Descripcion' de la tabla 'recetas' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablerecetas.DescripcionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Origen() As String
             Get
                 Try 
@@ -3598,21 +3583,6 @@ Partial Public Class recetasDataSet
             End Get
             Set
                 Me(Me.tablerecetas.TamanioPorcionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Instrucciones() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablerecetas.InstruccionesColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Instrucciones' de la tabla 'recetas' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablerecetas.InstruccionesColumn) = value
             End Set
         End Property
         
@@ -3693,6 +3663,36 @@ Partial Public Class recetasDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Temperatura() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablerecetas.TemperaturaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Temperatura' de la tabla 'recetas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablerecetas.TemperaturaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ModoPreparacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablerecetas.ModoPreparacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ModoPreparacion' de la tabla 'recetas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablerecetas.ModoPreparacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property unidadesRowByunidad_peso() As unidadesRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("unidad_peso")),unidadesRow)
@@ -3723,18 +3723,6 @@ Partial Public Class recetasDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombreNull()
             Me(Me.tablerecetas.NombreColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsDescripcionNull() As Boolean
-            Return Me.IsNull(Me.tablerecetas.DescripcionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetDescripcionNull()
-            Me(Me.tablerecetas.DescripcionColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3799,18 +3787,6 @@ Partial Public Class recetasDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsInstruccionesNull() As Boolean
-            Return Me.IsNull(Me.tablerecetas.InstruccionesColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetInstruccionesNull()
-            Me(Me.tablerecetas.InstruccionesColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsTipsNull() As Boolean
             Return Me.IsNull(Me.tablerecetas.TipsColumn)
         End Function
@@ -3867,6 +3843,30 @@ Partial Public Class recetasDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetUnidadPorcionNull()
             Me(Me.tablerecetas.UnidadPorcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTemperaturaNull() As Boolean
+            Return Me.IsNull(Me.tablerecetas.TemperaturaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTemperaturaNull()
+            Me(Me.tablerecetas.TemperaturaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsModoPreparacionNull() As Boolean
+            Return Me.IsNull(Me.tablerecetas.ModoPreparacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetModoPreparacionNull()
+            Me(Me.tablerecetas.ModoPreparacionColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6196,33 +6196,33 @@ Namespace recetasDataSetTableAdapters
             tableMapping.DataSetTable = "recetas"
             tableMapping.ColumnMappings.Add("ID", "ID")
             tableMapping.ColumnMappings.Add("Nombre", "Nombre")
-            tableMapping.ColumnMappings.Add("Descripcion", "Descripcion")
             tableMapping.ColumnMappings.Add("Origen", "Origen")
             tableMapping.ColumnMappings.Add("Historia", "Historia")
             tableMapping.ColumnMappings.Add("Peso", "Peso")
             tableMapping.ColumnMappings.Add("Porciones", "Porciones")
             tableMapping.ColumnMappings.Add("TamanioPorcion", "TamanioPorcion")
-            tableMapping.ColumnMappings.Add("Instrucciones", "Instrucciones")
             tableMapping.ColumnMappings.Add("Tips", "Tips")
             tableMapping.ColumnMappings.Add("Costo", "Costo")
             tableMapping.ColumnMappings.Add("TiempoPreparacion", "TiempoPreparacion")
             tableMapping.ColumnMappings.Add("UnidadPeso", "UnidadPeso")
             tableMapping.ColumnMappings.Add("UnidadPorcion", "UnidadPorcion")
+            tableMapping.ColumnMappings.Add("Temperatura", "Temperatura")
+            tableMapping.ColumnMappings.Add("ModoPreparacion", "ModoPreparacion")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `recetas` WHERE ((`ID` = @p1) AND ((@p2 = 1 AND `Nombre` IS NULL) OR "& _ 
-                "(`Nombre` = @p3)) AND ((@p4 = 1 AND `Descripcion` IS NULL) OR (`Descripcion` = @"& _ 
-                "p5)) AND ((@p6 = 1 AND `Origen` IS NULL) OR (`Origen` = @p7)) AND ((@p8 = 1 AND "& _ 
-                "`Historia` IS NULL) OR (`Historia` = @p9)) AND ((@p10 = 1 AND `Peso` IS NULL) OR"& _ 
-                " (`Peso` = @p11)) AND ((@p12 = 1 AND `Porciones` IS NULL) OR (`Porciones` = @p13"& _ 
-                ")) AND ((@p14 = 1 AND `TamanioPorcion` IS NULL) OR (`TamanioPorcion` = @p15)) AN"& _ 
-                "D ((@p16 = 1 AND `Instrucciones` IS NULL) OR (`Instrucciones` = @p17)) AND ((@p1"& _ 
-                "8 = 1 AND `Tips` IS NULL) OR (`Tips` = @p19)) AND ((@p20 = 1 AND `Costo` IS NULL"& _ 
-                ") OR (`Costo` = @p21)) AND ((@p22 = 1 AND `TiempoPreparacion` IS NULL) OR (`Tiem"& _ 
-                "poPreparacion` = @p23)) AND ((@p24 = 1 AND `UnidadPeso` IS NULL) OR (`UnidadPeso"& _ 
-                "` = @p25)) AND ((@p26 = 1 AND `UnidadPorcion` IS NULL) OR (`UnidadPorcion` = @p2"& _ 
-                "7)))"
+                "(`Nombre` = @p3)) AND ((@p4 = 1 AND `Origen` IS NULL) OR (`Origen` = @p5)) AND ("& _ 
+                "(@p6 = 1 AND `Historia` IS NULL) OR (`Historia` = @p7)) AND ((@p8 = 1 AND `Peso`"& _ 
+                " IS NULL) OR (`Peso` = @p9)) AND ((@p10 = 1 AND `Porciones` IS NULL) OR (`Porcio"& _ 
+                "nes` = @p11)) AND ((@p12 = 1 AND `TamanioPorcion` IS NULL) OR (`TamanioPorcion` "& _ 
+                "= @p13)) AND ((@p14 = 1 AND `Tips` IS NULL) OR (`Tips` = @p15)) AND ((@p16 = 1 A"& _ 
+                "ND `Costo` IS NULL) OR (`Costo` = @p17)) AND ((@p18 = 1 AND `TiempoPreparacion` "& _ 
+                "IS NULL) OR (`TiempoPreparacion` = @p19)) AND ((@p20 = 1 AND `UnidadPeso` IS NUL"& _ 
+                "L) OR (`UnidadPeso` = @p21)) AND ((@p22 = 1 AND `UnidadPorcion` IS NULL) OR (`Un"& _ 
+                "idadPorcion` = @p23)) AND ((@p24 = 1 AND `Temperatura` IS NULL) OR (`Temperatura"& _ 
+                "` = @p25)) AND ((@p26 = 1 AND `ModoPreparacion` IS NULL) OR (`ModoPreparacion` ="& _ 
+                " @p27)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -6254,7 +6254,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Descripcion"
+            param.SourceColumn = "Origen"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
@@ -6263,7 +6263,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Descripcion"
+            param.SourceColumn = "Origen"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6271,7 +6271,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Origen"
+            param.SourceColumn = "Historia"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
@@ -6280,7 +6280,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Origen"
+            param.SourceColumn = "Historia"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6288,16 +6288,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Historia"
+            param.SourceColumn = "Peso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p9"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
-            param.SourceColumn = "Historia"
+            param.SourceColumn = "Peso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6305,16 +6305,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Peso"
+            param.SourceColumn = "Porciones"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Peso"
+            param.SourceColumn = "Porciones"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6322,29 +6322,12 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Porciones"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            param.SourceColumnNullMapping = true
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "Porciones"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p14"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
             param.SourceColumn = "TamanioPorcion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p15"
+            param.ParameterName = "@p13"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
@@ -6352,20 +6335,37 @@ Namespace recetasDataSetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p14"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "Tips"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p15"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "Tips"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p16"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Instrucciones"
+            param.SourceColumn = "Costo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p17"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
-            param.SourceColumn = "Instrucciones"
+            param.SourceColumn = "Costo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6373,16 +6373,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Tips"
+            param.SourceColumn = "TiempoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p19"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.DbType = Global.System.Data.DbType.Time
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Time
             param.IsNullable = true
-            param.SourceColumn = "Tips"
+            param.SourceColumn = "TiempoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6390,7 +6390,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Costo"
+            param.SourceColumn = "UnidadPeso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
@@ -6399,7 +6399,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Costo"
+            param.SourceColumn = "UnidadPeso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6407,16 +6407,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "TiempoPreparacion"
+            param.SourceColumn = "UnidadPorcion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p23"
-            param.DbType = Global.System.Data.DbType.Time
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Time
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "TiempoPreparacion"
+            param.SourceColumn = "UnidadPorcion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6424,7 +6424,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "UnidadPeso"
+            param.SourceColumn = "Temperatura"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
@@ -6433,7 +6433,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "UnidadPeso"
+            param.SourceColumn = "Temperatura"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6441,7 +6441,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "UnidadPorcion"
+            param.SourceColumn = "ModoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
@@ -6450,15 +6450,15 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "UnidadPorcion"
+            param.SourceColumn = "ModoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `recetas` (`Nombre`, `Descripcion`, `Origen`, `Historia`, `Peso`, `Po"& _ 
-                "rciones`, `TamanioPorcion`, `Instrucciones`, `Tips`, `Costo`, `TiempoPreparacion"& _ 
-                "`, `UnidadPeso`, `UnidadPorcion`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8"& _ 
-                ", @p9, @p10, @p11, @p12, @p13)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `recetas` (`Nombre`, `Origen`, `Historia`, `Peso`, `Porciones`, `Tama"& _ 
+                "nioPorcion`, `Tips`, `Costo`, `TiempoPreparacion`, `UnidadPeso`, `UnidadPorcion`"& _ 
+                ", `Temperatura`, `ModoPreparacion`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @"& _ 
+                "p8, @p9, @p10, @p11, @p12, @p13)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -6472,102 +6472,102 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Descripcion"
+            param.SourceColumn = "Origen"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p3"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Origen"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
             param.SourceColumn = "Historia"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
+            param.ParameterName = "@p4"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "Peso"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
+            param.ParameterName = "@p5"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Porciones"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
+            param.ParameterName = "@p6"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "TamanioPorcion"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Instrucciones"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
+            param.ParameterName = "@p7"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Tips"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.ParameterName = "@p8"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "Costo"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
+            param.ParameterName = "@p9"
             param.DbType = Global.System.Data.DbType.Time
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Time
             param.IsNullable = true
             param.SourceColumn = "TiempoPreparacion"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p12"
+            param.ParameterName = "@p10"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "UnidadPeso"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
+            param.ParameterName = "@p11"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "UnidadPorcion"
             Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p12"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "Temperatura"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p13"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "ModoPreparacion"
+            Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `recetas` SET `Nombre` = @p1, `Descripcion` = @p2, `Origen` = @p3, `Histor"& _ 
-                "ia` = @p4, `Peso` = @p5, `Porciones` = @p6, `TamanioPorcion` = @p7, `Instruccion"& _ 
-                "es` = @p8, `Tips` = @p9, `Costo` = @p10, `TiempoPreparacion` = @p11, `UnidadPeso"& _ 
-                "` = @p12, `UnidadPorcion` = @p13 WHERE ((`ID` = @p14) AND ((@p15 = 1 AND `Nombre"& _ 
-                "` IS NULL) OR (`Nombre` = @p16)) AND ((@p17 = 1 AND `Descripcion` IS NULL) OR (`"& _ 
-                "Descripcion` = @p18)) AND ((@p19 = 1 AND `Origen` IS NULL) OR (`Origen` = @p20))"& _ 
-                " AND ((@p21 = 1 AND `Historia` IS NULL) OR (`Historia` = @p22)) AND ((@p23 = 1 A"& _ 
-                "ND `Peso` IS NULL) OR (`Peso` = @p24)) AND ((@p25 = 1 AND `Porciones` IS NULL) O"& _ 
-                "R (`Porciones` = @p26)) AND ((@p27 = 1 AND `TamanioPorcion` IS NULL) OR (`Tamani"& _ 
-                "oPorcion` = @p28)) AND ((@p29 = 1 AND `Instrucciones` IS NULL) OR (`Instruccione"& _ 
-                "s` = @p30)) AND ((@p31 = 1 AND `Tips` IS NULL) OR (`Tips` = @p32)) AND ((@p33 = "& _ 
-                "1 AND `Costo` IS NULL) OR (`Costo` = @p34)) AND ((@p35 = 1 AND `TiempoPreparacio"& _ 
-                "n` IS NULL) OR (`TiempoPreparacion` = @p36)) AND ((@p37 = 1 AND `UnidadPeso` IS "& _ 
-                "NULL) OR (`UnidadPeso` = @p38)) AND ((@p39 = 1 AND `UnidadPorcion` IS NULL) OR ("& _ 
-                "`UnidadPorcion` = @p40)))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `recetas` SET `Nombre` = @p1, `Origen` = @p2, `Historia` = @p3, `Peso` = @"& _ 
+                "p4, `Porciones` = @p5, `TamanioPorcion` = @p6, `Tips` = @p7, `Costo` = @p8, `Tie"& _ 
+                "mpoPreparacion` = @p9, `UnidadPeso` = @p10, `UnidadPorcion` = @p11, `Temperatura"& _ 
+                "` = @p12, `ModoPreparacion` = @p13 WHERE ((`ID` = @p14) AND ((@p15 = 1 AND `Nomb"& _ 
+                "re` IS NULL) OR (`Nombre` = @p16)) AND ((@p17 = 1 AND `Origen` IS NULL) OR (`Ori"& _ 
+                "gen` = @p18)) AND ((@p19 = 1 AND `Historia` IS NULL) OR (`Historia` = @p20)) AND"& _ 
+                " ((@p21 = 1 AND `Peso` IS NULL) OR (`Peso` = @p22)) AND ((@p23 = 1 AND `Porcione"& _ 
+                "s` IS NULL) OR (`Porciones` = @p24)) AND ((@p25 = 1 AND `TamanioPorcion` IS NULL"& _ 
+                ") OR (`TamanioPorcion` = @p26)) AND ((@p27 = 1 AND `Tips` IS NULL) OR (`Tips` = "& _ 
+                "@p28)) AND ((@p29 = 1 AND `Costo` IS NULL) OR (`Costo` = @p30)) AND ((@p31 = 1 A"& _ 
+                "ND `TiempoPreparacion` IS NULL) OR (`TiempoPreparacion` = @p32)) AND ((@p33 = 1 "& _ 
+                "AND `UnidadPeso` IS NULL) OR (`UnidadPeso` = @p34)) AND ((@p35 = 1 AND `UnidadPo"& _ 
+                "rcion` IS NULL) OR (`UnidadPorcion` = @p36)) AND ((@p37 = 1 AND `Temperatura` IS"& _ 
+                " NULL) OR (`Temperatura` = @p38)) AND ((@p39 = 1 AND `ModoPreparacion` IS NULL) "& _ 
+                "OR (`ModoPreparacion` = @p40)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -6581,84 +6581,84 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Descripcion"
+            param.SourceColumn = "Origen"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p3"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Origen"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
             param.SourceColumn = "Historia"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
+            param.ParameterName = "@p4"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "Peso"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
+            param.ParameterName = "@p5"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "Porciones"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
+            param.ParameterName = "@p6"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "TamanioPorcion"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "Instrucciones"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
+            param.ParameterName = "@p7"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "Tips"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.ParameterName = "@p8"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "Costo"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
+            param.ParameterName = "@p9"
             param.DbType = Global.System.Data.DbType.Time
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Time
             param.IsNullable = true
             param.SourceColumn = "TiempoPreparacion"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p12"
+            param.ParameterName = "@p10"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "UnidadPeso"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p13"
+            param.ParameterName = "@p11"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "UnidadPorcion"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p12"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "Temperatura"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p13"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "ModoPreparacion"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p14"
@@ -6690,7 +6690,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Descripcion"
+            param.SourceColumn = "Origen"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -6699,7 +6699,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Descripcion"
+            param.SourceColumn = "Origen"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6707,7 +6707,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Origen"
+            param.SourceColumn = "Historia"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -6716,7 +6716,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Origen"
+            param.SourceColumn = "Historia"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6724,16 +6724,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Historia"
+            param.SourceColumn = "Peso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p22"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
-            param.SourceColumn = "Historia"
+            param.SourceColumn = "Peso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6741,16 +6741,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Peso"
+            param.SourceColumn = "Porciones"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p24"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Peso"
+            param.SourceColumn = "Porciones"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6758,29 +6758,12 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Porciones"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            param.SourceColumnNullMapping = true
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "Porciones"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
             param.SourceColumn = "TamanioPorcion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
+            param.ParameterName = "@p26"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
@@ -6788,20 +6771,37 @@ Namespace recetasDataSetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p27"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "Tips"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p28"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "Tips"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p29"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Instrucciones"
+            param.SourceColumn = "Costo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p30"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
-            param.SourceColumn = "Instrucciones"
+            param.SourceColumn = "Costo"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6809,16 +6809,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Tips"
+            param.SourceColumn = "TiempoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p32"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.DbType = Global.System.Data.DbType.Time
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Time
             param.IsNullable = true
-            param.SourceColumn = "Tips"
+            param.SourceColumn = "TiempoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6826,7 +6826,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "Costo"
+            param.SourceColumn = "UnidadPeso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -6835,7 +6835,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "Costo"
+            param.SourceColumn = "UnidadPeso"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6843,16 +6843,16 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "TiempoPreparacion"
+            param.SourceColumn = "UnidadPorcion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p36"
-            param.DbType = Global.System.Data.DbType.Time
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Time
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "TiempoPreparacion"
+            param.SourceColumn = "UnidadPorcion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6860,7 +6860,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "UnidadPeso"
+            param.SourceColumn = "Temperatura"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -6869,7 +6869,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "UnidadPeso"
+            param.SourceColumn = "Temperatura"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -6877,7 +6877,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "UnidadPorcion"
+            param.SourceColumn = "ModoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -6886,7 +6886,7 @@ Namespace recetasDataSetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "UnidadPorcion"
+            param.SourceColumn = "ModoPreparacion"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
         End Sub
@@ -6905,9 +6905,9 @@ Namespace recetasDataSetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, Nombre, Descripcion, Origen, Historia, Peso, Porciones, TamanioPorcion"& _ 
-                ", Instrucciones, Tips, Costo, TiempoPreparacion, UnidadPeso, UnidadPorcion FROM "& _ 
-                "recetas"
+            Me._commandCollection(0).CommandText = "SELECT ID, Nombre, Origen, Historia, Peso, Porciones, TamanioPorcion, Tips, Costo"& _ 
+                ", TiempoPreparacion, UnidadPeso, UnidadPorcion, Temperatura, ModoPreparacion FRO"& _ 
+                "M recetas"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -6967,7 +6967,7 @@ Namespace recetasDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal p1 As Integer, ByVal p3 As String, ByVal p5 As String, ByVal p7 As String, ByVal p9 As String, ByVal p11 As Global.System.Nullable(Of Decimal), ByVal p13 As Global.System.Nullable(Of Integer), ByVal p15 As Global.System.Nullable(Of Decimal), ByVal p17 As String, ByVal p19 As String, ByVal p21 As String, ByVal p23 As Global.System.Nullable(Of Date), ByVal p25 As String, ByVal p27 As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal p1 As Integer, ByVal p3 As String, ByVal p5 As String, ByVal p7 As String, ByVal p9 As Global.System.Nullable(Of Decimal), ByVal p11 As Global.System.Nullable(Of Integer), ByVal p13 As Global.System.Nullable(Of Decimal), ByVal p15 As String, ByVal p17 As Global.System.Nullable(Of Decimal), ByVal p19 As Global.System.Nullable(Of Date), ByVal p21 As String, ByVal p23 As String, ByVal p25 As String, ByVal p27 As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(p1,Integer)
             If (p3 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -6990,47 +6990,47 @@ Namespace recetasDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = CType(p7,String)
             End If
-            If (p9 Is Nothing) Then
+            If (p9.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(p9.Value,Decimal)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(p9,String)
             End If
             If (p11.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(p11.Value,Decimal)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(p11.Value,Integer)
             Else
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
             If (p13.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(p13.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(p13.Value,Decimal)
             Else
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
             End If
-            If (p15.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(p15.Value,Decimal)
-            Else
+            If (p15 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(p15,String)
             End If
-            If (p17 Is Nothing) Then
+            If (p17.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(p17.Value,Decimal)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(p17,String)
             End If
-            If (p19 Is Nothing) Then
+            If (p19.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(p19.Value,Date)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(p19,String)
             End If
             If (p21 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
@@ -7039,12 +7039,12 @@ Namespace recetasDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = CType(p21,String)
             End If
-            If (p23.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(p23.Value,Date)
-            Else
+            If (p23 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(p23,String)
             End If
             If (p25 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
@@ -7079,7 +7079,7 @@ Namespace recetasDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As String, ByVal p3 As String, ByVal p4 As String, ByVal p5 As Global.System.Nullable(Of Decimal), ByVal p6 As Global.System.Nullable(Of Integer), ByVal p7 As Global.System.Nullable(Of Decimal), ByVal p8 As String, ByVal p9 As String, ByVal p10 As String, ByVal p11 As Global.System.Nullable(Of Date), ByVal p12 As String, ByVal p13 As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As String, ByVal p3 As String, ByVal p4 As Global.System.Nullable(Of Decimal), ByVal p5 As Global.System.Nullable(Of Integer), ByVal p6 As Global.System.Nullable(Of Decimal), ByVal p7 As String, ByVal p8 As Global.System.Nullable(Of Decimal), ByVal p9 As Global.System.Nullable(Of Date), ByVal p10 As String, ByVal p11 As String, ByVal p12 As String, ByVal p13 As String) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -7095,45 +7095,45 @@ Namespace recetasDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(p3,String)
             End If
-            If (p4 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            If (p4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4.Value,Decimal)
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4,String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
             If (p5.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5.Value,Decimal)
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (p6.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (p7.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p7.Value,Decimal)
-            Else
+            If (p7 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p7,String)
             End If
-            If (p8 Is Nothing) Then
+            If (p8.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p8.Value,Decimal)
+            Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p8,String)
             End If
-            If (p9 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            If (p9.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p9.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p9,String)
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             If (p10 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = CType(p10,String)
             End If
-            If (p11.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p11.Value,Date)
-            Else
+            If (p11 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p11,String)
             End If
             If (p12 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
@@ -7168,28 +7168,28 @@ Namespace recetasDataSetTableAdapters
                     ByVal p1 As String,  _
                     ByVal p2 As String,  _
                     ByVal p3 As String,  _
-                    ByVal p4 As String,  _
-                    ByVal p5 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p6 As Global.System.Nullable(Of Integer),  _
-                    ByVal p7 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p8 As String,  _
-                    ByVal p9 As String,  _
+                    ByVal p4 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p5 As Global.System.Nullable(Of Integer),  _
+                    ByVal p6 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p7 As String,  _
+                    ByVal p8 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p9 As Global.System.Nullable(Of Date),  _
                     ByVal p10 As String,  _
-                    ByVal p11 As Global.System.Nullable(Of Date),  _
+                    ByVal p11 As String,  _
                     ByVal p12 As String,  _
                     ByVal p13 As String,  _
                     ByVal p14 As Integer,  _
                     ByVal p16 As String,  _
                     ByVal p18 As String,  _
                     ByVal p20 As String,  _
-                    ByVal p22 As String,  _
-                    ByVal p24 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p26 As Global.System.Nullable(Of Integer),  _
-                    ByVal p28 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p30 As String,  _
-                    ByVal p32 As String,  _
+                    ByVal p22 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p24 As Global.System.Nullable(Of Integer),  _
+                    ByVal p26 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p28 As String,  _
+                    ByVal p30 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p32 As Global.System.Nullable(Of Date),  _
                     ByVal p34 As String,  _
-                    ByVal p36 As Global.System.Nullable(Of Date),  _
+                    ByVal p36 As String,  _
                     ByVal p38 As String,  _
                     ByVal p40 As String) As Integer
             If (p1 Is Nothing) Then
@@ -7207,45 +7207,45 @@ Namespace recetasDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p3,String)
             End If
-            If (p4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            If (p4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
             If (p5.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (p6.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (p7.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7.Value,Decimal)
-            Else
+            If (p7 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,String)
             End If
-            If (p8 Is Nothing) Then
+            If (p8.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8,String)
             End If
-            If (p9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            If (p9.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p9.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p9,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             If (p10 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10,String)
             End If
-            If (p11.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p11.Value,Date)
-            Else
+            If (p11 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p11,String)
             End If
             If (p12 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
@@ -7279,47 +7279,47 @@ Namespace recetasDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p20,String)
             End If
-            If (p22 Is Nothing) Then
+            If (p22.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p22.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p22,String)
             End If
             If (p24.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (p26.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p26.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p26.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
-            If (p28.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p28.Value,Decimal)
-            Else
+            If (p28 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p28,String)
             End If
-            If (p30 Is Nothing) Then
+            If (p30.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p30.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p30,String)
             End If
-            If (p32 Is Nothing) Then
+            If (p32.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(p32.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(p32,String)
             End If
             If (p34 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
@@ -7328,12 +7328,12 @@ Namespace recetasDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(33).Value = CType(p34,String)
             End If
-            If (p36.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(p36.Value,Date)
-            Else
+            If (p36 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(p36,String)
             End If
             If (p38 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)

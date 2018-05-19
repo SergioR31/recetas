@@ -15,19 +15,6 @@
 
     End Sub
 
-    Private Sub btnNuevoI_Click(sender As Object, e As EventArgs) Handles btnNuevoI.Click
-        Dim btnNuevoIngrediente As Button = sender
-
-        If btnNuevoIngrediente.Text.Equals("Nuevo Ingrediente") Then
-            SplitContainer1.Panel2Collapsed = False
-            cbxNombreNI.Text = ""
-            btnNuevoIngrediente.Text = "Cerrar"
-        Else
-            SplitContainer1.Panel2Collapsed = True
-            btnNuevoIngrediente.Text = "Nuevo Ingrediente"
-        End If
-
-    End Sub
 
     Private Sub btnAgregarI_Click(sender As Object, e As EventArgs) Handles btnAgregarI.Click
         Dim ingredienteID As Integer
@@ -83,7 +70,7 @@
             Next
 
             dibujarIngredientes(ingredienteID, nombreNuevoIngrediente, numCantidadNI.Value, cbxUnidadNI.Text.ToString, False)
-            SplitContainer1.Panel2Collapsed = True
+
         End If
 
     End Sub
@@ -150,7 +137,6 @@
         Dim recetaRow As DataRow = RecetasDataSet1.recetas.NewRow
 
         recetaRow("Nombre") = txtNombre.Text
-        recetaRow("Descripcion") = txtDescripcion.Text
         recetaRow("Origen") = txtOrigen.Text
         recetaRow("Historia") = txtHistoria.Text
         If ckbxPeso.Checked Then
@@ -173,6 +159,7 @@
         recetaRow("Tips") = txtTips.Text
         recetaRow("Costo") = numCosto.Value
         recetaRow("TiempoPreparacion") = New TimeSpan(numHoras.Value, numMinutos.Value, 0)
+        recetaRow("Temmperatura") = numTemperatura.Value.ToString + cbxGrados.Text
 
         For Each receta In RecetasDataSet1.recetas
             If txtNombre.Text.ToUpper.Equals(receta("Nombre").ToString.ToUpper) Then
@@ -255,4 +242,5 @@
     Private Sub numPeso_ValueChanged(sender As Object, e As EventArgs) Handles numPeso.ValueChanged
         CalcularPorciones(Me)
     End Sub
+
 End Class

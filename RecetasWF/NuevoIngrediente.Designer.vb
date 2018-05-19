@@ -47,7 +47,7 @@ Partial Class NuevoIngrediente
         '
         'btnGuardarIngrediente
         '
-        Me.btnGuardarIngrediente.Location = New System.Drawing.Point(372, 330)
+        Me.btnGuardarIngrediente.Location = New System.Drawing.Point(157, 221)
         Me.btnGuardarIngrediente.Name = "btnGuardarIngrediente"
         Me.btnGuardarIngrediente.Size = New System.Drawing.Size(91, 35)
         Me.btnGuardarIngrediente.TabIndex = 0
@@ -64,7 +64,7 @@ Partial Class NuevoIngrediente
         'numPrecioUniNuIn
         '
         Me.numPrecioUniNuIn.DecimalPlaces = 2
-        Me.numPrecioUniNuIn.Location = New System.Drawing.Point(360, 85)
+        Me.numPrecioUniNuIn.Location = New System.Drawing.Point(16, 166)
         Me.numPrecioUniNuIn.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.numPrecioUniNuIn.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numPrecioUniNuIn.Name = "numPrecioUniNuIn"
@@ -74,9 +74,8 @@ Partial Class NuevoIngrediente
         '
         'cbxUnidadNi
         '
-        Me.cbxUnidadNi.DataSource = Me.UnidadesBindingSource
-        Me.cbxUnidadNi.DisplayMember = "Unidad"
         Me.cbxUnidadNi.FormattingEnabled = True
+        Me.cbxUnidadNi.Items.AddRange(New Object() {"kg.", "g.", "ml.", "L.", "pza."})
         Me.cbxUnidadNi.Location = New System.Drawing.Point(207, 83)
         Me.cbxUnidadNi.Name = "cbxUnidadNi"
         Me.cbxUnidadNi.Size = New System.Drawing.Size(121, 24)
@@ -96,7 +95,7 @@ Partial Class NuevoIngrediente
         'numRenNuIn
         '
         Me.numRenNuIn.Increment = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.numRenNuIn.Location = New System.Drawing.Point(501, 83)
+        Me.numRenNuIn.Location = New System.Drawing.Point(157, 164)
         Me.numRenNuIn.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numRenNuIn.Name = "numRenNuIn"
         Me.numRenNuIn.Size = New System.Drawing.Size(120, 22)
@@ -106,7 +105,7 @@ Partial Class NuevoIngrediente
         'numPrecioReNuIn
         '
         Me.numPrecioReNuIn.DecimalPlaces = 2
-        Me.numPrecioReNuIn.Location = New System.Drawing.Point(640, 83)
+        Me.numPrecioReNuIn.Location = New System.Drawing.Point(296, 164)
         Me.numPrecioReNuIn.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.numPrecioReNuIn.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numPrecioReNuIn.Name = "numPrecioReNuIn"
@@ -135,7 +134,7 @@ Partial Class NuevoIngrediente
         'lblPrecioUnNuIn
         '
         Me.lblPrecioUnNuIn.AutoSize = True
-        Me.lblPrecioUnNuIn.Location = New System.Drawing.Point(357, 48)
+        Me.lblPrecioUnNuIn.Location = New System.Drawing.Point(13, 129)
         Me.lblPrecioUnNuIn.Name = "lblPrecioUnNuIn"
         Me.lblPrecioUnNuIn.Size = New System.Drawing.Size(123, 17)
         Me.lblPrecioUnNuIn.TabIndex = 4
@@ -144,7 +143,7 @@ Partial Class NuevoIngrediente
         'lblRendiNuIn
         '
         Me.lblRendiNuIn.AutoSize = True
-        Me.lblRendiNuIn.Location = New System.Drawing.Point(498, 48)
+        Me.lblRendiNuIn.Location = New System.Drawing.Point(154, 129)
         Me.lblRendiNuIn.Name = "lblRendiNuIn"
         Me.lblRendiNuIn.Size = New System.Drawing.Size(113, 17)
         Me.lblRendiNuIn.TabIndex = 4
@@ -153,7 +152,7 @@ Partial Class NuevoIngrediente
         'lblPrecioReNuIn
         '
         Me.lblPrecioReNuIn.AutoSize = True
-        Me.lblPrecioReNuIn.Location = New System.Drawing.Point(637, 48)
+        Me.lblPrecioReNuIn.Location = New System.Drawing.Point(293, 129)
         Me.lblPrecioReNuIn.Name = "lblPrecioReNuIn"
         Me.lblPrecioReNuIn.Size = New System.Drawing.Size(103, 17)
         Me.lblPrecioReNuIn.TabIndex = 4
@@ -171,7 +170,7 @@ Partial Class NuevoIngrediente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(463, 317)
         Me.Controls.Add(Me.lblPrecioReNuIn)
         Me.Controls.Add(Me.lblRendiNuIn)
         Me.Controls.Add(Me.lblPrecioUnNuIn)
